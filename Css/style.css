@@ -357,6 +357,8 @@ h1,h2,h3,h3,h4,h5,h6{
 .offert__bg{
     position: absolute;
     display: grid;
+    justify-content: center;
+    align-content: center;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr;
     max-width: 300px;
@@ -370,6 +372,7 @@ h1,h2,h3,h3,h4,h5,h6{
 .offert__img{
     width: 100%;
     grid-row: 2/2;
+    padding: 1.5rem;
     object-fit: cover;
 }
 
