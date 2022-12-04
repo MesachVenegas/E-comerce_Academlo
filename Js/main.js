@@ -35,6 +35,17 @@ const menuToggle = () =>{
     })
 }
 
+// load products of inventory
+const loadProducts = (items) => {
+    items.forEach(item => {
+        const product = document.createElement("div")
+        product.classList.add("product-item")
+        product.innerHTML = `
+        `;
+        document.querySelector(".products-list").appendChild(product)
+    });
+};
+
 const cartToggle = () =>{
     const cartOpen = document.getElementById('cart');
     const cartclose = document.getElementById('cart-close');
