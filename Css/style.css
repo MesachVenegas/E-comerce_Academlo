@@ -111,7 +111,7 @@ h1,h2,h3,h3,h4,h5,h6{
     justify-content: flex-start;
     padding: 2rem;
     gap: 1.5rem;
-    left: -100%;
+    left: -110%;
     font-size: 1.5rem;
     align-items: center;
     top: 90px;
@@ -344,7 +344,7 @@ h1,h2,h3,h3,h4,h5,h6{
 }
 
 
-/* Home offert */
+/* Home offert mobile View*/
 .home{
     position: relative;
     width: 100%;
@@ -418,7 +418,7 @@ h1,h2,h3,h3,h4,h5,h6{
 }
 
 
-/* Productos */
+/* Productos Mobile View*/
 .products{
     display: flex;
     flex-direction: column;
@@ -523,6 +523,49 @@ h1,h2,h3,h3,h4,h5,h6{
     box-shadow: var(--shadow);
 }
 
+/* Footer Mobile View */
+.foot__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem;
+    gap: 2rem;
+    background-color: var(--card-color);
+}
+
+.foot__address{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.foot__list{
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: .5rem;
+}
+
+.foot__link{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.foot__list--social{
+    flex-direction: row;
+    font-size: 1.2rem;
+    gap: 1.5rem;
+}
+
+.foot__copy{
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+}
 
 /* breakpoints */
 @media screen and (min-width: 578px) {
@@ -541,8 +584,8 @@ h1,h2,h3,h3,h4,h5,h6{
         }
 
         .offert__bg {
-            max-width: 300px;
-            height: 470px;
+            max-width: 260px;
+            height: 490px;
         }
 
         .offert__content {
@@ -555,11 +598,27 @@ h1,h2,h3,h3,h4,h5,h6{
         }
 
         .offert__description {
-            font-size: 1rem;
+            font-size: .9rem;
         }
 
         .item__card{
             max-width: 230px;
+        }
+
+        .footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: var(--card-color);
+        }
+
+        .foot__container{
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 80%;
+            padding: 2.5rem .5rem ;
         }
 }
 
