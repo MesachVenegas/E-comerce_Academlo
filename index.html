@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAwesome Icon Kit -->
+    <script src="https://kit.fontawesome.com/ea9b6ffb65.js" crossorigin="anonymous"></script>
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="shortcut icon" href="./Assets/svgs/logo_sin_contorno.svg" type="image/x-icon">
+    <title>Academlo Store | Home</title>
+</head>
+<body id="body">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="./index.html" class="navbar__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.92 56.48" class="navbar__logo__svg">
+                <title>Academlo Logo</title>
+                <g>
+                    <g>
+                        <path
+                            d="M28.58,15.39H25.16L35.78,36H31.49L20.67,15.71,8.23,38.82H18.94l3-5.43h-3.4l-1.47,2.54h-4l2.69-5.09H25.85l4.28,8H40.67ZM17.23,28.21l3.57-6.6,3.57,6.6Z">
+                        </path>
+                    </g>
+                </g>
+            </svg>
+            <span class="navbar__logo__text">Store</span>
+        </a>
+        <!-- Menu de navegación -->
+        <ul class="navbar__menu" id="nav-menu">
+            <li class="navbar__menu__item">
+                <a class="menu__link active" href="#Home">Home</a>
+            </li>
+            <li class="navbar__menu__item">
+                <a class="menu__link" href="#Products">Productos</a>
+            </li>
+        </ul>
+        <!-- Botonera del menu de navegación -->
+        <ul class="navbar__btns" id="btns">
+            <li class="btn__navbar navbar__btn__mode" id="mode">
+                <i class="fa-solid fa-moon"></i>
+            </li>
+            <li class="btn__navbar" id="cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart__counter" id="cart-counter">3</span>
+            </li>
+            <li class="btn__navbar--menu" id="menu">
+                <div class="stripe__menu" id="stripe-1"></div>
+                <div class="stripe__menu" id="stripe-2"></div>
+                <div class="stripe__menu" id="stripe-3"></div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Carrito de compras -->
+    <div class="cart" id="cart-body">
+        <div class="cart__overlay"></div>
+        <div class="cart__content" id="cart-items">
+            <div class="cart__close__btn" id="cart-close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h2>My Cart</h2>
+            <div class="cart__item">
+                <div class="cart__img__container">
+                    <img class="cart__img" src="./Assets/images/featured1.png" alt="Hoddie_Academlo_red">
+                </div>
+                <div class="item__detail">
+                    <h3>Shirts</h3>
+                    <div class="item__stock">
+                        <span>Stock: 10</span>
+                        <hr class="item__separator">
+                        <span class="item__price">$24.00</span>
+                    </div>
+                    <p class="item__subtotal">
+                        Subtotal: $24.00
+                    </p>
+                    <div class="item__menu">
+                        <div class="item__btns">
+                            <button class="item__btn">-</button>
+                            <span class="item__unities"> 1 Units</span>
+                            <button class="item__btn">+</button>
+                        </div>
+                        <span class="item__trash__btn">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="cart__item">
+                <div class="cart__img__container">
+                    <img class="cart__img" src="./Assets/images/featured2.png" alt="Hoddie_Academlo_red">
+                </div>
+                <div class="item__detail">
+                    <h3>Shirts</h3>
+                    <div class="item__stock">
+                        <span>Stock: 15</span>
+                        <hr class="item__separator">
+                        <span class="item__price">$24.00</span>
+                    </div>
+                    <p class="item__subtotal">
+                        Subtotal: $24.00
+                    </p>
+                    <div class="item__menu">
+                        <div class="item__btns">
+                            <button class="item__btn">-</button>
+                            <span class="item__unities"> 1 Units</span>
+                            <button class="item__btn">+</button>
+                        </div>
+                        <span class="item__trash__btn">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="cart__item">
+                <div class="cart__img__container">
+                    <img class="cart__img" src="./Assets/images/featured3.png" alt="Hoddie_Academlo_red">
+                </div>
+                <div class="item__detail">
+                    <h3>Shirts</h3>
+                    <div class="item__stock">
+                        <span>Stock: 20</span>
+                        <hr class="item__separator">
+                        <span class="item__price">$24.00</span>
+                    </div>
+                    <p class="item__subtotal">
+                        Subtotal: $24.00
+                    </p>
+                    <div class="item__menu">
+                        <div class="item__btns">
+                            <button class="item__btn">-</button>
+                            <span class="item__unities"> 1 Units</span>
+                            <button class="item__btn">+</button>
+                        </div>
+                        <span class="item__trash__btn">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Home  -->
+    <section class="home" id="#Home">
+        <div class="offert__box__container">
+            <div class="offert__bg">
+                <img class="offert__img" src="./Assets/images/featured2.png" alt="Sweatshirt_Black_Academlo">
+            </div>
+        </div>
+        <div class="offert__content">
+            <h2 class="offert__title">New Sweatshirt <p>Collections 2022</p></h2>
+            <p class="offert__description">Lastest arrival of the new Hanes Midweight Crewneck sweatshirt imported from the 2022 series with a modern desing</p>
+            <span class="offert__price">$14.00</span>
+            <div class="offert__btns">
+                <a class="btn btn--offert">Discover</a>
+                <a class="btn btn--offert">ADD TO CART</a>
+            </div>
+        </div>
+    </section>
+    <!-- Products -->
+    <section class="products" id="#Products">
+        <div class="products__filter">
+            <div class="filter__item">
+                <h3>Show All</h3>
+                <p>Show all products</p>
+            </div>
+            <hr class="filter__hr">
+            <div class="filter__item">
+                <h3>Hoddies</h3>
+                <p>3 Products</p>
+            </div>
+            <hr class="filter__hr">
+            <div class="filter__item">
+                <h3>Shirts</h3>
+                <p>4 Products</p>
+            </div>
+            <hr class="filter__hr">
+            <div class="filter__item">
+                <h3>Sweatshirts</h3>
+                <p>4 Products</p>
+            </div>
+        </div>
+        <div class="products__container">
+            <div class="item__card">
+                <div class="item__img">
+                    <img class="item__card__img" src="./Assets/images/featured1.png" alt="Hoddie_Academlo_red">
+                </div>
+                <div class="item__description">
+                    <div class="item__wherehouse">
+                        <span class="item__price item__price--products">$14.00</span>
+                        <hr class="item__separator">
+                        <span class="item__stock">Stock: 1</span>
+                    </div>
+                    <h3 class="item__category">Hoddies</h3>
+                </div>
+                <button class="btn item__btn--add">+</button>
+            </div>
+
+            <div class="item__card">
+                <div class="item__img">
+                    <img class="item__card__img" src="./Assets/images/featured2.png" alt="Hoddie_Academlo_red">
+                </div>
+                <div class="item__description">
+                    <div class="item__wherehouse">
+                        <span class="item__price item__price--products">$24.00</span>
+                        <hr class="item__separator">
+                        <span class="item__stock">Stock: 10</span>
+                    </div>
+                    <h3 class="item__category">Shirts</h3>
+                </div>
+                <button class="btn item__btn--add">+</button>
+            </div>
+
+            <div class="item__card">
+                <div class="item__img">
+                    <img class="item__card__img" src="./Assets/images/featured3.png" alt="Hoddie_Academlo_red">
+                </div>
+                <div class="item__description">
+                    <div class="item__wherehouse">
+                        <span class="item__price item__price--products">$24.00</span>
+                        <hr class="item__separator">
+                        <span class="item__stock">Stock: 18</span>
+                    </div>
+                    <h3 class="item__category">Sweatshirts</h3>
+                </div>
+                <button class="btn item__btn--add">+</button>
+            </div>
+
+        </div>
+    </section>
+    <!-- Main Script -->
+    <script src="./Js/main.js"></script>
+</body>
+</html>
