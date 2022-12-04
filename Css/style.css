@@ -224,6 +224,7 @@ h1,h2,h3,h3,h4,h5,h6{
 
 .cart--open{
     right: 0;
+    transition: all .7s ease;
 }
 
 .cart__overlay{
@@ -262,6 +263,7 @@ h1,h2,h3,h3,h4,h5,h6{
     height: 100%;
     background-color: var(--container-color);
     box-shadow: -8px 8px 8px 1px rgba(0, 0, 0, 0.3);
+    transition: left .7s ease;
     z-index: 50;
 }
 
