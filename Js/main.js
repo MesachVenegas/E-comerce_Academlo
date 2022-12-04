@@ -39,15 +39,18 @@ const cartToggle = () =>{
     const cartOpen = document.getElementById('cart');
     const cartclose = document.getElementById('cart-close');
     const cart = document.getElementById('cart-body');
+    const overlay = document.getElementById('overlay-cart')
     const cartItems = document.getElementById('cart-items')
     cartOpen.addEventListener('click', e =>{
         cart.classList.add('cart--open')
         cartItems.classList.add('cart--open')
+        overlay.classList.add('cart__overlay--open')
     })
 
     cartclose.addEventListener('click', e =>{
         cart.classList.remove('cart--open')
         cartItems.classList.remove('cart--open')
+        overlay.classList.remove('cart__overlay--open')
     })
 }
 
