@@ -675,7 +675,7 @@ h1,h2,h3,h3,h4,h5,h6{
     }
 
     .item__card {
-        max-width: 300px;
+        max-width: 290px;
     }
 }
 @media screen and (min-width: 992px) {
