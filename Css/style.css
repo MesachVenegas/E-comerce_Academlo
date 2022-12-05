@@ -243,18 +243,31 @@ h1,h2,h3,h3,h4,h5,h6{
     left: 0;
 }
 
+.cart__menu{
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 .cart__close__btn{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: flex-end;
     width: 35px;
     height: 35px;
     font-size: 2rem;
     font-weight: bold;
     color: var(--text-color);
     cursor: pointer;
+}
+
+.cart__title{
+    align-self: center;
 }
 
 .cart__content{
@@ -265,10 +278,11 @@ h1,h2,h3,h3,h4,h5,h6{
     justify-content: flex-start;
     align-items: center;
     min-width: 400px;
-    gap: 1.5rem;
+    height: 100%;
+    overflow-y: scroll;
+    gap: 2rem;
     padding: 2rem;
     overflow-y: scroll;
-    height: 100%;
     background-color: var(--container-color);
     box-shadow: -8px 8px 8px 1px rgba(0, 0, 0, 0.3);
     transition: left .7s ease;
@@ -279,7 +293,7 @@ h1,h2,h3,h3,h4,h5,h6{
     display: flex;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 150px;
     gap: .5rem;
 }
 

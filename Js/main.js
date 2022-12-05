@@ -93,18 +93,68 @@ const navScroll = () => {
     }
 }
 
-const addProduct = () =>{
+const addProduct = (cartProducts) =>{
     const productContainer = document.querySelector('.products__container')
     const counter = document.getElementById('cart-counter')
+    // Agrega items al carrito de compras.
+    let selected;
     productContainer.addEventListener('click',e =>{
         if(e.target.tagName == "BUTTON"){
-            let selected = items.filter(item => item.id == e.target.attributes.id.value)
-            cartItems.push(selected)
-            counter.innerHTML = `${cartItems.length}`
-            console.log(cartItems);
+            items.forEach(item => {
+                if (item.id == e.target.attributes.id.value){
+                    if(item.quantity > 0){
+                        selected = item
+                        selected.inCart = 1 ;
+                        cartItems.push(selected)
+                    }
+                    else{
+                        alert("No hay stock Disponible")
+                    }
+                }
+            })
+            counter.innerHTML = `${cartItems.length}`;
+            loadCartProducts(selected)
         }
     })
-}
+    // Agrega los productos al carrito de compras
+    // { id, name, price, image, category, quantity, unity }
+    const loadCartProducts = () =>{
+            const listCartItems = document.getElementById('itemsToBuy')
+            const exist = document.querySelectorAll('.cart__item');
+            cartItems.forEach(item =>{
+                const cartItem = document.createElement("div");
+                let subTotal = item.price * item.inCart;
+                cartItem.classList.add("cart__item");
+                cartItem.innerHTML = `
+                    <div class="cart__img__container">
+                        <img class="cart__img" src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="item__detail">
+                        <h3>${item.category}</h3>
+                        <div class="item__stock">
+                            <span>Stock: ${item.quantity}</span>
+                            <hr class="item__separator--cart ">
+                            <span class="item__price">$${item.price.toFixed(2)}</span>
+                        </div>
+                        <p class="item__subtotal">
+                            Subtotal: ${subTotal.toFixed(2)}
+                        </p>
+                        <div class="item__menu">
+                            <div class="item__btns">
+                                <button class="item__btn" id="decrease-btn">-</button>
+                                <span class="item__unities"> ${item.inCart} Units</span>
+                                <button class="item__btn" id="add-btn">+</button>
+                            </div>
+                            <span class="item__trash__btn" id="trash-item">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </div>
+                    </div>
+                    `
+                listCartItems.appendChild(cartItem)
+            })
+        }
+    }
 
 document.addEventListener('DOMContentLoaded', () => {
     changeMode()
