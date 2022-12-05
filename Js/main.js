@@ -1,5 +1,30 @@
 import { items } from './_prodcuts.mjs';
 
+const items = [{
+    id: 1,
+    name: "Hoodies",
+    price: 14.0,
+    image: "Assets/images/featured1.png",
+    category: "Hoodies",
+    quantity: 10,
+},
+{
+    id: 2,
+    name: "Shirts",
+    price: 24.0,
+    image: "Assets/images/featured2.png",
+    category: "Shirts",
+    quantity: 15,
+},
+{
+    id: 3,
+    name: "Sweatshirts",
+    price: 24.0,
+    image: "Assets/images/featured3.png",
+    category: "Shirts",
+    quantity: 20,
+},
+];
 const cartItems = [];
 
 const changeMode = () => {
