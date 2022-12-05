@@ -1,4 +1,4 @@
-import { items } from './_prodcuts.mjs';
+// import { items } from './_prodcuts.mjs';
 
 const items = [{
     id: 1,
