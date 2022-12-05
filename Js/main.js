@@ -118,41 +118,47 @@ const addProduct = (cartProducts) =>{
     })
     // Agrega los productos al carrito de compras
     // { id, name, price, image, category, quantity, unity }
-    const loadCartProducts = () =>{
-            const listCartItems = document.getElementById('itemsToBuy')
-            const exist = document.querySelectorAll('.cart__item');
-            cartItems.forEach(item =>{
-                const cartItem = document.createElement("div");
-                let subTotal = item.price * item.inCart;
-                cartItem.classList.add("cart__item");
-                cartItem.innerHTML = `
-                    <div class="cart__img__container">
-                        <img class="cart__img" src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="item__detail">
-                        <h3>${item.category}</h3>
-                        <div class="item__stock">
-                            <span>Stock: ${item.quantity}</span>
-                            <hr class="item__separator--cart ">
-                            <span class="item__price">$${item.price.toFixed(2)}</span>
-                        </div>
-                        <p class="item__subtotal">
-                            Subtotal: ${subTotal.toFixed(2)}
-                        </p>
-                        <div class="item__menu">
-                            <div class="item__btns">
-                                <button class="item__btn" id="decrease-btn">-</button>
-                                <span class="item__unities"> ${item.inCart} Units</span>
-                                <button class="item__btn" id="add-btn">+</button>
-                            </div>
-                            <span class="item__trash__btn" id="trash-item">
-                                <i class="fa-solid fa-trash"></i>
-                            </span>
-                        </div>
-                    </div>
-                    `
-                listCartItems.appendChild(cartItem)
+    const loadCartProducts = ({ id, name, price, image, category, quantity, inCart }) =>{
+        const listCartItems = document.getElementById('itemsToBuy')
+        const itemsToBuy = document.querySelectorAll('.cart__item')
+        let subtotal = quantity * inCart;
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart__item");
+            cartItem.setAttribute('id', `${id}`)
+            itemsToBuy.forEach(item =>{
+                if(item.attributes.id.value == id){
+                    inCart += 1;
+                    item.remove()
+                }
             })
+            let subTotal = price * inCart;
+            cartItem.innerHTML = `
+                <div class="cart__img__container">
+                    <img class="cart__img" src="${image}" alt="${name}">
+                </div>
+                <div class="item__detail">
+                    <h3>${category}</h3>
+                    <div class="item__stock">
+                        <span>Stock: ${quantity}</span>
+                        <hr class="item__separator--cart ">
+                        <span class="item__price">$${price.toFixed(2)}</span>
+                    </div>
+                    <p class="item__subtotal">
+                        Subtotal: ${subTotal.toFixed(2)}
+                    </p>
+                    <div class="item__menu">
+                        <div class="item__btns">
+                            <button class="item__btn" id="decrease-btn">-</button>
+                            <span class="item__unities"> ${inCart} Units</span>
+                            <button class="item__btn" id="add-btn">+</button>
+                        </div>
+                        <span class="item__trash__btn" id="trash-item">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </div>
+                </div>
+                `
+        listCartItems.appendChild(cartItem)
         }
     }
 
