@@ -57,8 +57,11 @@ body.dark {
 }
 
 .btn:hover{
+    color: #000;;
+    background-color: var(--first-color);
     box-shadow: var(--shadow);
 }
+
 
 h1,h2,h3,h3,h4,h5,h6{
     color: var(--title-color);
@@ -73,7 +76,7 @@ h1,h2,h3,h3,h4,h5,h6{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 90px;
+    height: 70px;
     z-index: 20;
     transition: all .6s ease;
 }
@@ -93,12 +96,12 @@ h1,h2,h3,h3,h4,h5,h6{
 }
 
 .navbar__logo__svg{
-    width: 70px;
+    width: 60px;
     fill: var(--first-color);
 }
 
 .navbar__logo__text{
-    font-size: 1.9rem;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -114,7 +117,7 @@ h1,h2,h3,h3,h4,h5,h6{
     left: -110%;
     font-size: 1.5rem;
     align-items: center;
-    top: 90px;
+    top: 75px;
     background-color: var(--container-color);
     transition: all .7s ease-in;
 }
@@ -217,7 +220,7 @@ h1,h2,h3,h3,h4,h5,h6{
     width: 100%;
     height: 100%;
     top: 0;
-    left: -100%;
+    left: -120%;
     z-index: 30;
     transition: all .7s ease;
 }
@@ -247,6 +250,7 @@ h1,h2,h3,h3,h4,h5,h6{
     position: sticky;
     top: 0;
     display: flex;
+    padding: 1.5rem;
     flex-direction: column;
     width: 100%;
     justify-content: flex-end;
@@ -273,27 +277,60 @@ h1,h2,h3,h3,h4,h5,h6{
 .cart__content{
     display: flex;
     position: fixed;
-    right: -100;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-width: 400px;
+    max-width: 400px;
     height: 100%;
+    gap: .5rem;
     overflow-y: scroll;
-    gap: 2rem;
-    padding: 2rem;
-    overflow-y: scroll;
-    background-color: var(--container-color);
+    background-color: var(--body-color);
     box-shadow: -8px 8px 8px 1px rgba(0, 0, 0, 0.3);
     transition: left .7s ease;
     z-index: 50;
+}
+
+.cart__list__items{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -20px;
+    gap: 2rem;
+    width: 100;
+    padding: 2rem;
+    overflow-y: scroll;
+    min-height: 330px;
+}
+
+.cart__empty{
+    width: 100%;
+    height: 300px;
+}
+
+.cart__empty__img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.cart__checkOut{
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.btn__check{
+    border: none;
+    color: #FFF;
+    background-color: var(--button-color);
 }
 
 .cart__item{
     display: flex;
     align-items: center;
     width: 100%;
-    height: 150px;
+    height: 140px;
     gap: .5rem;
 }
 
@@ -301,8 +338,8 @@ h1,h2,h3,h3,h4,h5,h6{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 }
 
 .cart__img{
@@ -375,7 +412,7 @@ h1,h2,h3,h3,h4,h5,h6{
     align-content: center;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr;
-    max-width: 300px;
+    max-width: 280px;
     height: 450px;
     top: -90px;
     right: 0;
@@ -425,10 +462,17 @@ h1,h2,h3,h3,h4,h5,h6{
     color: var(--title-color);
 }
 
-.btn--offert:hover{
+.btn--active{
     color: #FFF;
     transform: scale(1.1);
     background-color: var(--button-color);
+    box-shadow: var(--shadow);
+}
+
+.btn--offert:hover{
+    color: #000;
+    transform: scale(1.1);
+    background-color: var(--first-color);
 }
 
 
@@ -538,6 +582,14 @@ h1,h2,h3,h3,h4,h5,h6{
 }
 
 /* Footer Mobile View */
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--card-color);
+}
+
 .foot__container{
     display: flex;
     flex-direction: column;
@@ -545,19 +597,20 @@ h1,h2,h3,h3,h4,h5,h6{
     align-items: flex-start;
     padding: 2.5rem;
     gap: 2rem;
-    background-color: var(--card-color);
 }
 
 .foot__address{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .foot__list{
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
+    font-weight: bold;
     list-style: none;
     gap: .5rem;
 }
@@ -567,9 +620,13 @@ h1,h2,h3,h3,h4,h5,h6{
     text-decoration: none;
 }
 
+.foot__link:hover{
+    color: var(--first-color);
+}
+
 .foot__list--social{
     flex-direction: row;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     gap: 1.5rem;
 }
 
@@ -584,56 +641,49 @@ h1,h2,h3,h3,h4,h5,h6{
 /* breakpoints */
 @media screen and (min-width: 578px) {
     .home {
-            width: 100%;
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: 3fr;
-        }
+        width: 100%;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 3fr;
+    }
 
-        .offert__box__container {
-            width: 100%;
-            height: 100%;
-            gap: 2rem;
-            grid-column: 2/2;
-        }
+    .offert__box__container {
+        width: 100%;
+        height: 100%;
+        gap: 2rem;
+        grid-column: 2/2;
+    }
 
-        .offert__bg {
-            max-width: 260px;
-            height: 490px;
-        }
+    .offert__bg {
+        max-width: 260px;
+        height: 490px;
+    }
 
-        .offert__content {
-            width: 60%;
-            padding: 2rem;
-        }
+    .offert__content {
+        width: 60%;
+        padding: 2rem;
+    }
 
-        .offert__title {
-            font-size: 2rem;
-        }
+    .offert__title {
+        font-size: 2rem;
+    }
 
-        .offert__description {
-            font-size: .9rem;
-        }
+    .offert__description {
+        font-size: .9rem;
+    }
 
-        .item__card{
-            max-width: 230px;
-        }
+    .item__card{
+        max-width: 230px;
+    }
 
-        .footer{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            background-color: var(--card-color);
-        }
 
-        .foot__container{
-            flex-direction: row;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            width: 80%;
-            padding: 2.5rem .5rem ;
-        }
+    .foot__container{
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 80%;
+        padding: 2.5rem .5rem ;
+    }
 }
 
 @media screen and (min-width: 798px) {
