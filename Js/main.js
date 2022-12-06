@@ -1,5 +1,3 @@
-// import { items } from './_prodcuts.mjs';
-
 const items = [{
     id: 1,
     name: "Hoodies",
@@ -121,43 +119,47 @@ const navScroll = () => {
 const addProduct = (cartProducts) =>{
     const productContainer = document.querySelector('.products__container')
     const counter = document.getElementById('cart-counter')
+    const empty = document.getElementById('empty-cart');
+    const btnChecOut = document.getElementById('checkOut')
     // Agrega items al carrito de compras.
     let selected;
+    let cartCounter = 0;
     productContainer.addEventListener('click',e =>{
+        empty.style = "display: none";
         if(e.target.tagName == "BUTTON"){
             items.forEach(item => {
                 if (item.id == e.target.attributes.id.value){
+                    selected = item
+                    selected.inCart = 0;
                     if(item.quantity > 0){
-                        selected = item
-                        selected.inCart = 1 ;
+                        selected.inCart += 1;
                         cartItems.push(selected)
+                        item.quantity--
+                        cartCounter++
                     }
                     else{
                         alert("No hay stock Disponible")
                     }
                 }
             })
-            counter.innerHTML = `${cartItems.length}`;
-            loadCartProducts(selected)
-        }
-    })
-    // Agrega los productos al carrito de compras
-    // { id, name, price, image, category, quantity, unity }
-    const loadCartProducts = ({ id, name, price, image, category, quantity, inCart }) =>{
-        const listCartItems = document.getElementById('itemsToBuy')
-        const itemsToBuy = document.querySelectorAll('.cart__item')
-        let subtotal = quantity * inCart;
-            const cartItem = document.createElement("div");
-            cartItem.classList.add("cart__item");
-            cartItem.setAttribute('id', `${id}`)
-            itemsToBuy.forEach(item =>{
-                if(item.attributes.id.value == id){
-                    inCart += 1;
-                    item.remove()
-                }
-            })
-            let subTotal = price * inCart;
-            cartItem.innerHTML = `
+            counter.innerHTML = `${cartCounter}`;
+            // Agrega los productos al carrito de compras
+            // { id, name, price, image, category, quantity, unity }
+            const loadCartProducts = ({ id, name, price, image, category, quantity, inCart }) => {
+                const listCartItems = document.getElementById('itemsToBuy')
+                const itemsToBuy = document.querySelectorAll('.cart__item')
+                const cartItem = document.createElement("div");
+                let subTotal = price * inCart;
+                cartItem.classList.add("cart__item");
+                cartItem.setAttribute('id', `${id}`)
+                itemsToBuy.forEach(item => {
+                    if (item.attributes.id.value == id) {
+                        inCart += 1;
+                        item.remove()
+                    }
+                })
+                console.log(subTotal);
+                cartItem.innerHTML = `
                 <div class="cart__img__container">
                     <img class="cart__img" src="${image}" alt="${name}">
                 </div>
@@ -183,9 +185,14 @@ const addProduct = (cartProducts) =>{
                     </div>
                 </div>
                 `
-        listCartItems.appendChild(cartItem)
+                listCartItems.appendChild(cartItem)
+            }
+            loadCartProducts(selected)
         }
-    }
+    })
+}
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     changeMode()
