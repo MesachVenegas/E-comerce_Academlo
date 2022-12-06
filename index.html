@@ -63,86 +63,16 @@
                 <h2 class="cart__title">My Cart</h2>
             </div>
             <div class="cart__list__items" id="itemsToBuy">
-
-            </div>
-            <!-- <div class="cart__item">
-                <div class="cart__img__container">
-                    <img class="cart__img" src="./Assets/images/featured1.png" alt="Hoddie_Academlo_red">
-                </div>
-                <div class="item__detail">
-                    <h3>Shirts</h3>
-                    <div class="item__stock">
-                        <span>Stock: 10</span>
-                        <hr class="item__separator--cart ">
-                        <span class="item__price">$24.00</span>
-                    </div>
-                    <p class="item__subtotal">
-                        Subtotal: $24.00
-                    </p>
-                    <div class="item__menu">
-                        <div class="item__btns">
-                            <button class="item__btn">-</button>
-                            <span class="item__unities"> 1 Units</span>
-                            <button class="item__btn">+</button>
-                        </div>
-                        <span class="item__trash__btn">
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </div>
+                <div class="cart__empty" id="empty-cart">
+                    <img src="./Assets/images/empty-cart.png" alt="Carrito Vació" class="cart__empty__img">
                 </div>
             </div>
-            <div class="cart__item">
-                <div class="cart__img__container">
-                    <img class="cart__img" src="./Assets/images/featured2.png" alt="Hoddie_Academlo_red">
-                </div>
-                <div class="item__detail">
-                    <h3>Shirts</h3>
-                    <div class="item__stock">
-                        <span>Stock: 15</span>
-                        <hr class="item__separator--cart ">
-                        <span class="item__price">$24.00</span>
-                    </div>
-                    <p class="item__subtotal">
-                        Subtotal: $24.00
-                    </p>
-                    <div class="item__menu">
-                        <div class="item__btns">
-                            <button class="item__btn">-</button>
-                            <span class="item__unities"> 1 Units</span>
-                            <button class="item__btn">+</button>
-                        </div>
-                        <span class="item__trash__btn">
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </div>
-                </div>
+            <div class="cart__checkOut">
+                <button class="btn btn__check" id="checkOut">
+                    <i class="fa-solid fa-shield"></i>
+                    Check Out
+                </button>
             </div>
-            <div class="cart__item">
-                <div class="cart__img__container">
-                    <img class="cart__img" src="./Assets/images/featured3.png" alt="Hoddie_Academlo_red">
-                </div>
-                <div class="item__detail">
-                    <h3>Shirts</h3>
-                    <div class="item__stock">
-                        <span>Stock: 20</span>
-                        <hr class="item__separator--cart ">
-                        <span class="item__price">$24.00</span>
-                    </div>
-                    <p class="item__subtotal">
-                        Subtotal: $24.00
-                    </p>
-                    <div class="item__menu">
-                        <div class="item__btns">
-                            <button class="item__btn">-</button>
-                            <span class="item__unities"> 1 Units</span>
-                            <button class="item__btn">+</button>
-                        </div>
-                        <span class="item__trash__btn">
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     <!-- Home  -->
@@ -158,7 +88,7 @@
             <span class="offert__price">$14.00</span>
             <div class="offert__btns">
                 <a class="btn btn--offert">Discover</a>
-                <a class="btn btn--offert">ADD TO CART</a>
+                <a class="btn btn--offert btn--active">ADD TO CART</a>
             </div>
         </div>
     </section>
@@ -195,9 +125,9 @@
             <!-- Dirección -->
             <div class="foot__adress">
                 <h4>Our Information</h4>
-                <address>
-                    <p>Toluca-México</p>
-                </address>
+                <ul class="foot__list">
+                    <li><a href="#" class="foot__link">Toluca-México</a></li>
+                </ul>
             </div>
             <!-- About Us -->
             <div class="foot__about">
