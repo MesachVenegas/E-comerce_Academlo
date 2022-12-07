@@ -219,6 +219,7 @@ h1,h2,h3,h3,h4,h5,h6{
     position: absolute;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     top: 0;
     left: -120%;
     z-index: 30;
@@ -232,10 +233,10 @@ h1,h2,h3,h3,h4,h5,h6{
 
 .cart__overlay{
     position: fixed;
-    width: 100%;
+    width: 70%;
     height: 100%;
     top: 0;
-    left: -100%;
+    right: -100%;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     background-color:   var(--overlay__bg);
@@ -286,7 +287,7 @@ h1,h2,h3,h3,h4,h5,h6{
     overflow-y: scroll;
     background-color: var(--body-color);
     box-shadow: -8px 8px 8px 1px rgba(0, 0, 0, 0.3);
-    transition: left .7s ease;
+    transition: all .7s ease-in;
     z-index: 50;
 }
 
