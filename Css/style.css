@@ -324,8 +324,8 @@ h1,h2,h3,h3,h4,h5,h6{
 
 .btn__check{
     border: none;
-    color: #FFF;
-    background-color: var(--button-color);
+    color: var(--text-color);
+    background-color: var(--button-color-alt);
 }
 
 .cart__item{
@@ -347,6 +347,18 @@ h1,h2,h3,h3,h4,h5,h6{
 .cart__img{
     width: 100%;
     object-fit: cover;
+}
+
+.resume{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2.5rem;
+    width: 100%;
+}
+
+.resume__item{
+    font-weight: bold;
 }
 
 .item__detail{
