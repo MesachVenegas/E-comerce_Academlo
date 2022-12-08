@@ -28,7 +28,13 @@ const cartItems = [];
 const changeMode = () => {
     const mode = document.getElementById('mode');
     const webContent = document.getElementById('body');
+    const icon = document.getElementById('icon-mode')
     mode.addEventListener('click', e => {
+        if (icon.classList.contains("fa-moon")) {
+            icon.classList.replace("fa-moon", "fa-sun")
+        } else {
+            icon.classList.replace("fa-sun", "fa-moon")
+        }
         webContent.classList.toggle('dark')
     })
 }
@@ -120,7 +126,7 @@ const addProduct = (cartProducts) =>{
     const productContainer = document.querySelector('.products__container')
     const counter = document.getElementById('cart-counter')
     const empty = document.getElementById('empty-cart');
-    const btnChecOut = document.getElementById('checkOut')
+    const btnCheckOut = document.getElementById('checkOut')
     // Agrega items al carrito de compras.
     let selected;
     let cartCounter = 0;
