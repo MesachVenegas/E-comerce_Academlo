@@ -22,7 +22,9 @@ export const addProduct = (items) => {
                                 alert("No hay stock")
                             }else{
                                 selected[index].unity++
-                                insideItems++
+                                if(item.unity <= item.quantity){
+                                    insideItems++
+                                }
                             }
                         } else {
                             item.unity = 1;
