@@ -69,9 +69,9 @@ const loadCartProducts = ({ id, name, price, image, category, quantity, unity })
                 </p>
                 <div class="item__menu">
                     <div class="item__btns">
-                        <button class="item__btn" id="decrease-btn">-</button>
-                        <span class="item__unities"> ${unity} Units</span>
-                        <button class="item__btn" id="add-btn">+</button>
+                        <button class="item__btn" id="less-${id}">-</button>
+                        <span class="item__unities" id="unity-${id}"> ${unity} Units</span>
+                        <button class="item__btn" id="add-${id}">+</button>
                     </div>
                     <span class="item__trash__btn" id="trash-item">
                         <i class="fa-solid fa-trash"></i>
@@ -80,4 +80,19 @@ const loadCartProducts = ({ id, name, price, image, category, quantity, unity })
             </div>
             `
         listCartItems.appendChild(cartItem)
+        cartItem.addEventListener('click',e =>{
+            if(e.target.tagName == 'BUTTON'){
+                console.log(e.target.id);
+                selected.forEach(({ id, name, price, image, category, quantity, unity }) =>{
+                    if(`add-${id}` == e.target.id){
+                        if(quantity >= unity){
+                            ++unity
+                        }
+                        else{
+                            alert("We don't have any more, sorry...")
+                        }
+                    }
+                })
+            }
+        })
 }
