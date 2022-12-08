@@ -18,13 +18,11 @@ export const addProduct = (items) => {
                     if (item.quantity > 0 ) {
                         let index = selected.indexOf(item)
                         if (index !== -1) {
-                            if(item.quantity < selected[index].unity){
-                                alert("No hay stock")
+                            selected[index].unity++;
+                            if(item.unity <= item.quantity){
+                                insideItems++
                             }else{
-                                selected[index].unity++
-                                if(item.unity <= item.quantity){
-                                    insideItems++
-                                }
+                                alert("We don't have any more, sorry...")
                             }
                         } else {
                             item.unity = 1;
