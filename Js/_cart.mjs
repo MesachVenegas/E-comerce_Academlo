@@ -17,11 +17,6 @@ export const addProduct = (items) => {
         empty.style = "display: none";
         if (e.target.tagName == "BUTTON") { // Verifico que el elemento presionado sea un boton '+'.
             items.forEach(item => {
-                selected.forEach(item =>{
-                    // if (item.id == e.target.attributes.id.value) total += item.price;
-                    // console.log(item.price);
-                    // console.log(item.unity);
-                })
                 if (item.id == e.target.attributes.id.value) {
                     if (item.quantity > 0 ) {
                         let index = selected.indexOf(item)
@@ -30,7 +25,6 @@ export const addProduct = (items) => {
                             if(item.unity <= item.quantity){
                                 insideItems++
                                 total += item.price;
-                                console.log(total);
                             }else{
                                 alert("We don't have any more, sorry...")
                             }
