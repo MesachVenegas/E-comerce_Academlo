@@ -1,4 +1,8 @@
 // Variables de control de items en carrito.
+const counter = document.getElementById('cart-counter')
+const totalItems = document.getElementById('total-items')
+const totalToPay = document.getElementById('to-pay')
+const btnCheckOut = document.getElementById('checkOut')
 let selected = [];
 let subTotal = 0;
 let total = 0;
@@ -7,11 +11,7 @@ let insideItems = 0;
 
 export const addProduct = (items) => {
     const productContainer = document.querySelector('.products__container')
-    const counter = document.getElementById('cart-counter')
     const empty = document.getElementById('empty-cart');
-    const totalItems = document.getElementById('total-items')
-    const totalToPay = document.getElementById('to-pay')
-    const btnCheckOut = document.getElementById('checkOut')
     // Detecta cada que se presiona el boton de "+" y incrementa el contador
     productContainer.addEventListener('click', e => {
         empty.style = "display: none";
@@ -31,8 +31,8 @@ export const addProduct = (items) => {
                         } else {
                             item.unity = 1;
                             insideItems++
-                            selected.push(item)
                             total += item.price
+                            selected.push(item)
                         }
                     }
                 }
@@ -40,6 +40,7 @@ export const addProduct = (items) => {
                     loadCartProducts(item)
                 }
             })
+            addRestCartItem()
             counter.innerHTML = `${insideItems}`;
             totalItems.innerHTML = `${insideItems} items`;
             totalToPay.innerHTML = `$${total.toFixed(2)}`
@@ -56,35 +57,79 @@ const loadCartProducts = ({ id, name, price, image, category, quantity, unity })
         if (item.attributes.id.value == id)  item.remove();
     })
 
-        const cartItem = document.createElement("div");
-        cartItem.classList.add("cart__item");
-        cartItem.setAttribute('id', `${id}`)
-        subTotal = price * unity;
-        cartItem.innerHTML = `
-            <div class="cart__img__container">
-                <img class="cart__img" src="${image}" alt="${name}">
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart__item");
+    cartItem.setAttribute('id', `${id}`)
+    subTotal = price * unity;
+    cartItem.innerHTML = `
+        <div class="cart__img__container">
+            <img class="cart__img" src="${image}" alt="${name}">
+        </div>
+        <div class="item__detail">
+            <h3>${category}</h3>
+            <div class="item__stock">
+                <span>Stock: ${quantity}</span>
+                <hr class="item__separator--cart ">
+                <span class="item__price">$${price.toFixed(2)}</span>
             </div>
-            <div class="item__detail">
-                <h3>${category}</h3>
-                <div class="item__stock">
-                    <span>Stock: ${quantity}</span>
-                    <hr class="item__separator--cart ">
-                    <span class="item__price">$${price.toFixed(2)}</span>
+            <p class="item__subtotal" id='subtotal-${id}'>
+                Subtotal: $${subTotal.toFixed(2)}
+            </p>
+            <div class="item__menu">
+                <div class="item__btns">
+                    <button class="item__btn" id="less-${id}">-</button>
+                    <span class="item__unities" id="unity-${id}"> ${unity} Units</span>
+                    <button class="item__btn" id="add-${id}">+</button>
                 </div>
-                <p class="item__subtotal">
-                    Subtotal: $${subTotal.toFixed(2)}
-                </p>
-                <div class="item__menu">
-                    <div class="item__btns">
-                        <button class="item__btn" id="less-${id}">-</button>
-                        <span class="item__unities" id="unity-${id}"> ${unity} Units</span>
-                        <button class="item__btn" id="add-${id}">+</button>
-                    </div>
-                    <span class="item__trash__btn" id="trash-item">
-                        <i class="fa-solid fa-trash"></i>
-                    </span>
-                </div>
+                <span class="item__trash__btn" id="trash-item">
+                    <i class="fa-solid fa-trash"></i>
+                </span>
             </div>
-            `
-        listCartItems.appendChild(cartItem)
+        </div>
+        `
+    listCartItems.appendChild(cartItem)
+}
+
+const addRestCartItem = () =>{
+    const itemsCard = document.querySelectorAll('.cart__item')
+    itemsCard.forEach(itemCard => {
+        itemCard.addEventListener('click', e => {
+            if (e.target.tagName === 'BUTTON') {
+                selected.forEach(item => {
+                    const subTotalItems = document.getElementById(`subtotal-${item.id}`)
+                    const unityItem = document.getElementById(`unity-${item.id}`)
+                    if (e.target.id == `add-${item.id}`) {
+                        if (item.quantity > item.unity){
+                            item.unity++
+                            insideItems++
+                            subTotal = item.price * item.unity;
+                            total += item.price;
+                            counter.innerHTML = `${insideItems}`;
+                            unityItem.innerHTML = `${item.unity} Units`
+                            subTotalItems.innerHTML =`Subtotal: $${subTotal.toFixed(2)}`
+                            totalItems.innerHTML = `${insideItems} items`;
+                            totalToPay.innerHTML = `$${total.toFixed(2)}`
+                        }else{
+                            alert("We don't have any more, sorry...")
+                        }
+                    }else if(e.target.id == `less-${item.id}`) {
+                        if (item.unity > 1){
+                            item.unity--
+                            insideItems--
+                            subTotal = item.price * item.unity;
+                            total -= item.price;
+                            counter.innerHTML = `${insideItems}`;
+                            unityItem.innerHTML = `${item.unity} Units`
+                            subTotalItems.innerHTML = `Subtotal: $${subTotal.toFixed(2)}`
+                            totalItems.innerHTML = `${insideItems} items`;
+                            totalToPay.innerHTML = `$${total.toFixed(2)}`
+                        }
+                        else {
+                            let answer = confirm("Want delete item?")
+                        }
+                    }
+                })
+            }
+        })
+    })
 }
