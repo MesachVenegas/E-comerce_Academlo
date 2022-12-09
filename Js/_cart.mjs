@@ -1,6 +1,7 @@
 // Variables de control de items en carrito.
 let selected = [];
 let subTotal = 0;
+let total = 0;
 let insideItems = 0;
 
 
@@ -8,12 +9,19 @@ export const addProduct = (items) => {
     const productContainer = document.querySelector('.products__container')
     const counter = document.getElementById('cart-counter')
     const empty = document.getElementById('empty-cart');
+    const totalItems = document.getElementById('total-items')
+    const totalToPay = document.getElementById('to-pay')
     const btnCheckOut = document.getElementById('checkOut')
     // Detecta cada que se presiona el boton de "+" y incrementa el contador
     productContainer.addEventListener('click', e => {
         empty.style = "display: none";
         if (e.target.tagName == "BUTTON") { // Verifico que el elemento presionado sea un boton '+'.
             items.forEach(item => {
+                selected.forEach(item =>{
+                    // if (item.id == e.target.attributes.id.value) total += item.price;
+                    // console.log(item.price);
+                    // console.log(item.unity);
+                })
                 if (item.id == e.target.attributes.id.value) {
                     if (item.quantity > 0 ) {
                         let index = selected.indexOf(item)
@@ -21,6 +29,8 @@ export const addProduct = (items) => {
                             selected[index].unity++;
                             if(item.unity <= item.quantity){
                                 insideItems++
+                                total += item.price;
+                                console.log(total);
                             }else{
                                 alert("We don't have any more, sorry...")
                             }
@@ -28,6 +38,7 @@ export const addProduct = (items) => {
                             item.unity = 1;
                             insideItems++
                             selected.push(item)
+                            total += item.price
                         }
                     }
                 }
@@ -36,6 +47,8 @@ export const addProduct = (items) => {
                 }
             })
             counter.innerHTML = `${insideItems}`;
+            totalItems.innerHTML = `${insideItems} items`;
+            totalToPay.innerHTML = `$${total.toFixed(2)}`
         }
     })
 }
@@ -65,7 +78,7 @@ const loadCartProducts = ({ id, name, price, image, category, quantity, unity })
                     <span class="item__price">$${price.toFixed(2)}</span>
                 </div>
                 <p class="item__subtotal">
-                    Subtotal: ${subTotal.toFixed(2)}
+                    Subtotal: $${subTotal.toFixed(2)}
                 </p>
                 <div class="item__menu">
                     <div class="item__btns">
@@ -80,19 +93,4 @@ const loadCartProducts = ({ id, name, price, image, category, quantity, unity })
             </div>
             `
         listCartItems.appendChild(cartItem)
-        cartItem.addEventListener('click',e =>{
-            if(e.target.tagName == 'BUTTON'){
-                console.log(e.target.id);
-                selected.forEach(({ id, name, price, image, category, quantity, unity }) =>{
-                    if(`add-${id}` == e.target.id){
-                        if(quantity >= unity){
-                            ++unity
-                        }
-                        else{
-                            alert("We don't have any more, sorry...")
-                        }
-                    }
-                })
-            }
-        })
 }
