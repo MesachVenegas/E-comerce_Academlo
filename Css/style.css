@@ -285,7 +285,6 @@ h1,h2,h3,h3,h4,h5,h6{
     max-width: 400px;
     height: 100%;
     gap: .5rem;
-    overflow-y: scroll;
     background-color: var(--body-color);
     box-shadow: -8px 8px 8px 1px rgba(0, 0, 0, 0.3);
     transition: all .7s ease-in;
@@ -301,7 +300,8 @@ h1,h2,h3,h3,h4,h5,h6{
     width: 100;
     padding: 2rem;
     overflow-y: scroll;
-    min-height: 330px;
+    min-height: 55vh;
+    max-height: 55vh;
 }
 
 .cart__empty{
@@ -317,7 +317,7 @@ h1,h2,h3,h3,h4,h5,h6{
 .cart__checkOut{
     display: flex;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem 2rem;
     justify-content: flex-end;
     align-items: flex-start;
 }
@@ -354,7 +354,7 @@ h1,h2,h3,h3,h4,h5,h6{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2.5rem;
+    padding: 0 2.5rem;
     width: 100%;
 }
 
