@@ -2,6 +2,7 @@
 const counter = document.getElementById('cart-counter')
 const totalItems = document.getElementById('total-items')
 const totalToPay = document.getElementById('to-pay')
+const empty = document.getElementById('empty-cart');
 const btnCheckOut = document.getElementById('checkOut')
 let selected = [];
 let subTotal = 0;
@@ -11,7 +12,6 @@ let insideItems = 0;
 
 export const addProduct = (items) => {
     const productContainer = document.querySelector('.products__container')
-    const empty = document.getElementById('empty-cart');
     // Detecta cada que se presiona el boton de "+" y incrementa el contador
     productContainer.addEventListener('click', e => {
         empty.style = "display: none";
@@ -82,7 +82,7 @@ const loadCartProducts = ({ id, name, price, image, category, quantity, unity })
                     <button class="item__btn" id="add-${id}">+</button>
                 </div>
                 <span class="item__trash__btn" id="trash-item">
-                    <i class="fa-solid fa-trash"></i>
+                    <i class="fa-solid fa-trash" id='trash-${id}'></i>
                 </span>
             </div>
         </div>
@@ -126,10 +126,51 @@ const addRestCartItem = () =>{
                         }
                         else {
                             let answer = confirm("Want delete item?")
+                            if(answer){
+                                deleteCartItem(item)
+                            }
                         }
                     }
                 })
             }
+            selected.forEach(item => {
+                if (e.target.tagName === 'I') {
+                    if(e.target.id == `trash-${item.id}`){
+                        // console.log(e.target.id);
+                        deleteCartItem(item)
+                    }
+                }
+            })
         })
     })
+}
+
+const deleteCartItem = (item= undefined) =>{
+    let indexItem;
+    const itemsToBuy = document.querySelectorAll('.cart__item')
+    const subTotalItems = document.getElementById(`subtotal-${item.id}`)
+    const unityItem = document.getElementById(`unity-${item.id}`)
+    // if (item.id == id) item.remove();
+    selected.forEach(({ id, name, price, image, category, quantity, unity }) =>{
+            // console.log(item.id, id);
+            if(id === item.id){
+                itemsToBuy.forEach(itemToBuy => {
+                    if(item.id == itemToBuy.id){
+                        indexItem = selected.indexOf(item)
+                        item.unity = 0;
+                        insideItems--
+                        subTotal = item.price * item.unity;
+                        total -= item.price;
+                        counter.innerHTML = `${insideItems}`;
+                        unityItem.innerHTML = `${item.unity} Units`
+                        subTotalItems.innerHTML = `Subtotal: $${subTotal.toFixed(2)}`
+                        totalItems.innerHTML = `${insideItems} items`;
+                        totalToPay.innerHTML = `$${total.toFixed(2)}`
+                        itemToBuy.remove()
+                    }
+                })
+            }
+        })
+        selected[indexItem] = item;
+        empty.style = 'display: static';
 }
