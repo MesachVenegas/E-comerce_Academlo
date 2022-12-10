@@ -127,7 +127,7 @@ const addRestCartItem = () =>{
                         else {
                             let answer = confirm("Want delete item?")
                             if(answer){
-                                deleteCartItem(item)
+                                deleteCartItem(item, itemsCard)
                             }
                         }
                     }
@@ -137,7 +137,7 @@ const addRestCartItem = () =>{
                 if (e.target.tagName === 'I') {
                     if(e.target.id == `trash-${item.id}`){
                         // console.log(e.target.id);
-                        deleteCartItem(item)
+                        deleteCartItem(item, itemsCard)
                     }
                 }
             })
@@ -145,15 +145,15 @@ const addRestCartItem = () =>{
     })
 }
 
-const deleteCartItem = (item= undefined) =>{
+const deleteCartItem = (item= undefined, itemsCard) =>{
     let indexItem;
     const itemsToBuy = document.querySelectorAll('.cart__item')
     const subTotalItems = document.getElementById(`subtotal-${item.id}`)
     const unityItem = document.getElementById(`unity-${item.id}`)
     // if (item.id == id) item.remove();
-    selected.forEach(({ id, name, price, image, category, quantity, unity }) =>{
+    selected.forEach(select =>{
             // console.log(item.id, id);
-            if(id === item.id){
+            if(select.id === item.id){
                 itemsToBuy.forEach(itemToBuy => {
                     if(item.id == itemToBuy.id){
                         indexItem = selected.indexOf(item)
@@ -171,6 +171,25 @@ const deleteCartItem = (item= undefined) =>{
                 })
             }
         })
+        let  bolean= 0;
         selected[indexItem] = item;
-        empty.style = 'display: static';
-}
+        const displayBg =  selected.map(select => {
+                if(select.unity == 0){
+                    return   0;
+                }else{
+                    return  1;
+                }
+            })
+        displayBg.forEach(item =>{
+            bolean += item;
+        })
+        if(bolean === 0){
+            insideItems = 0;
+            subTotal = 0;
+            counter.innerHTML = `${insideItems}`;
+            subTotalItems.innerHTML = `Subtotal: $${subTotal.toFixed(2)}`
+            totalItems.innerHTML = `${insideItems} items`;
+            totalToPay.innerHTML = `$${total.toFixed(2)}`
+            empty.style = "display: static";
+        }
+    }
