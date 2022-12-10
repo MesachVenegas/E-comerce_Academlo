@@ -331,7 +331,8 @@ h1,h2,h3,h3,h4,h5,h6{
 .cart__item{
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    width: 400px;
     height: 100px;
     gap: .5rem;
 }

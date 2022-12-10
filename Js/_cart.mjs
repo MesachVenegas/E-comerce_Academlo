@@ -184,8 +184,7 @@ const deleteCartItem = (item= undefined, itemsCard) =>{
             bolean += item;
         })
         if(bolean === 0){
-            insideItems = 0;
-            subTotal = 0;
+            insideItems, subTotal, total = 0;
             counter.innerHTML = `${insideItems}`;
             subTotalItems.innerHTML = `Subtotal: $${subTotal.toFixed(2)}`
             totalItems.innerHTML = `${insideItems} items`;
